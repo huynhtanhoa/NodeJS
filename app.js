@@ -1,5 +1,8 @@
-require('./utils.js');
+const validator = require('validator')
 
-const name = 'Steven';
+const getNotes = require('./utils.js');
 
-console.log(name);
+const msg = getNotes();
+
+console.log(msg);
+
