@@ -1,8 +1,11 @@
-const validator = require('validator')
-
 const getNotes = require('./utils.js');
+const chalk = require('chalk');
 
-const msg = getNotes();
+const command = process.argv[2]
 
-console.log(msg);
+if(command === 'add') {
+    console.log('Adding notes');
+} else if (command === 'remove') {
+    console.log('Removing notes')
+}
 
