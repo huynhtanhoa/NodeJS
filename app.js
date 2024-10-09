@@ -1,11 +1,26 @@
-const getNotes = require('./utils.js');
+const notes = require('./notes.js');
 const chalk = require('chalk');
+const yargs = require('yargs');
 
-const command = process.argv[2]
+// Create add command
+yargs.command({
+    command: 'add',
+    description: 'Add a new note',
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        notes.addNote(argv.title, argv.body)
+    }
+})
 
-if(command === 'add') {
-    console.log('Adding notes');
-} else if (command === 'remove') {
-    console.log('Removing notes')
-}
-
+yargs.parse()
